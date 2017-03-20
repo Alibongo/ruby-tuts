@@ -8,15 +8,18 @@ class FileReader
     File.read(filename).each_line do |line| #for each line, we assign it to a var called line
       # this begins a loop going over each line in the file.
     # do |line| begins a Ruby Block that contains code to handle Line var.
-    person = line.split(',')
-    # age = person[1].strip
-    city = person[2].strip
+#the result of splitting the line gets assigned to person var:
+    person = line.split(',')# split method. Splits line with comma. Judy,20 becomes an array.
+  # Access the array referencing index
+  #variable called city with hold value as below:
+    city = person[2].strip #strip removes whitespace in string
     # puts is method for printing the particular line.
       puts city
     end
   end
   def find_ages(filename)
-    ages_file = File.open('ages.txt','w')
+
+    ages_file = File.open('ages.txt','w')#includes letter w.
     File.read(filename).each_line do |line|
     person = line.split(',')
     age = person[1].strip
