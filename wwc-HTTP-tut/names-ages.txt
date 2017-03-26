@@ -1,5 +1,5 @@
 Judy 20
 Amy 43
 Mark 23
-Tom 23
+Tom 71
 Lily 65

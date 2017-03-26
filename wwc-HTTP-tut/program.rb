@@ -1,25 +1,25 @@
-require_relative 'file_reader' #this will ref FileReader - see blocked out code below
+# this calls the code to read the file.
+# require_relative references file_reader and accesses it.
+# require_relative creates an Object called file_reader
+# read_file method is invoked. Passing in addressbook.txt as a parameter
+require_relative 'file_reader'
 require_relative 'http_reader'
-
-# ****   An object is an instance of a class.
-# ****   A class has the deinition. But you need to
-# ****     create an instance of it (ie object) to use it.
-
-
-# ****    this is creating an object called file_reader
-# file_reader = FileReader.new
-
-#****     Here read_file method is invoked on the newly created file_reader instance
-#****     addressbook.txt is passed in as a parameter
+require_relative 'http_poster'
 
 # file_reader.read_file('addressbook.txt')
 # file_reader.find_ages('addressbook.txt')
 # file_reader.find_names_ages('addressbook.txt')
 
-# **** see HttpReader file and request
 http_reader = HttpReader.new
-# ****  GET request.
-http_reader.get('http://api.postcodes.io/postcodes/tw91ep/nearest')
+response = http_reader.get('http://api.postcodes.io/postcodes/tw91ep/nearest')
+puts http_reader.get_status(response)
+
+response = http_reader.get('http://api.postcodes.io/postcodes/tw91ep')
+puts http_reader.get_country(response)
+puts http_reader.get_lat_long(response)
+
 
 puts 'POST request'
-http_reader.post('http://api.postcodes.io/postcodes', {postcodes: ['TW91EP','EC1V9JS']})
+http_poster = HttpPoster.new
+response = http_poster.post('http://api.postcodes.io/postcodes', {postcodes: ['TW91EP', 'EC1V9JS']})
+puts http_reader.get_status(response)

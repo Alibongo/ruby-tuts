@@ -1,44 +1,75 @@
-# class is defined as FileReader
-# see where it ends.
 class FileReader
+  #  A class holds the definition & logic
+  #  A method is a block of reusable code that contains logic
 
-#method takes parameter 'filename' which will be referenced
-  def read_file(filename)
-  #Below: this reads the file(referencing filename)
-    File.read(filename).each_line do |line| #for each line, we assign it to a var called line
-      # this begins a loop going over each line in the file.
-    # do |line| begins a Ruby Block that contains code to handle Line var.
-#the result of splitting the line gets assigned to person var:
-    person = line.split(',')# split method. Splits line with comma. Judy,20 becomes an array.
-  # Access the array referencing index
-  #variable called city with hold value as below:
-    city = person[2].strip #strip removes whitespace in string
-    # puts is method for printing the particular line.
+
+# ------- Exercise 1 --------
+# -searching for letter M only.
+
+# read_file reads, then outputs what it has read.
+# the parameter is filename
+#   def read_file(filename)
+#     File.read(filename).each_line do |line|
+#     if (line.include?('m'))
+#       puts line
+#     end
+#   end
+#   end
+# end
+
+# ------ Exercise 2 -------
+# -Finding Ages
+# def read_file(filename)
+#     File.read(filename).each_line do |line|
+#     person = line.split(',')
+#     age = person[1].strip
+#       puts age
+#     end
+# end
+
+
+#  ------ Exercise 3 -------
+# -Finding city
+def read_file(filename)
+    File.read(filename).each_line do |line|
+    person = line.split(',')
+    city = person[2].strip
       puts city
     end
-  end
-  def find_ages(filename)
+end
 
-    ages_file = File.open('ages.txt','w')#includes letter w.
-    File.read(filename).each_line do |line|
+# -Finding writing age file
+# the mode 'w' is passed in. AKA write.
+# ages.txt gets assigned to ages_file
+def find_ages(filename)
+  ages_file = File.open('ages.txt', 'w')
+  File.read(filename).each_line do |line|
     person = line.split(',')
     age = person[1].strip
     ages_file.puts(age)
-    end
-    ages_file.close
   end
-  def find_names_ages(filename)
+  ages_file.close
+end
 
-    output_file = File.open('names-ages.txt','w')
-    File.read(filename).each_line do |line|
-    person = line.split(',')
-    age = person[1].strip
-    name = person[0].strip
-name_age = "#{name} #{age}"
-  output_file.puts(name_age)
-  end
+# ----- Exercise 4 -----
+# -writing name and age
 
-    output_file.close
+def find_names_ages(filename)
+  output_file = File.open('names-ages.txt' , 'w')
+File.read(filename).each_line do |line|
+  person = line.split(',')
+  name = person [0].strip
+  age = person [1]. strip
+output_file.puts("#{name} #{age}")
+end
+  output_file.close
+end
 
-  end
+# ----- Excercise 5 -----
+# - HTTP Requests
+
+
+
+
+
 end

@@ -1,6 +1,2 @@
-# frozen_string_literal: true
-source "https://rubygems.org"
-#rest-client will make http request to the postcode api
-gem 'rest-client','~> 1.8'
-
-# gem "rails"
+source 'https://rubygems.org'
+gem 'rest-client', '~>1.8'
